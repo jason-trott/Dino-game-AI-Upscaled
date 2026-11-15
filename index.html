@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Play the retro Chrome Dino T-Rex runner game in HTML5 with responsive controls, pixel-art graphics, and 8-bit sound effects.">
+    <meta name="theme-color" content="#0f1117">
+    <title>Chrome T-Rex Dino Runner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-wrapper">
+        <!-- Top Bar Header -->
+        <header class="header-bar">
+            <div class="brand-title">
+                <span style="font-size: 20px;">🦖</span>
+                <h1>T-Rex Runner</h1>
+                <span class="badge">Retro</span>
+            </div>
+
+            <div class="header-actions">
+                <button id="btnMute" class="icon-btn" title="Toggle Sound">
+                    <span>🔊</span>
+                    <span>Sound</span>
+                </button>
+                <button id="btnPause" class="icon-btn" title="Pause Game (P)">
+                    <span>⏸</span>
+                    <span>Pause</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Arcade Screen Container -->
+        <div class="arcade-cabinet">
+            <div id="canvasContainer" class="canvas-container">
+                <!-- HTML5 Game Canvas -->
+                <canvas id="gameCanvas"></canvas>
+
+                <!-- HUD: Score & Speed -->
+                <div class="hud-overlay">
+                    <span id="highScoreCounter" class="high-score-counter">HI 00000</span>
+                    <span id="scoreCounter" class="score-counter">00000</span>
+                </div>
+
+                <div id="speedIndicator" class="speed-indicator">SPD 1.0x</div>
+
+                <!-- Start Screen Modal -->
+                <div id="startModal" class="modal-overlay active">
+                    <div class="modal-card">
+                        <h2 class="modal-title start">READY TO RUN?</h2>
+                        <p style="color: #cbd5e1; font-size: 14px; line-height: 1.5; margin-bottom: 18px;">
+                            Dodge cacti and duck under flying pterodactyls in this retro endless runner!
+                        </p>
+                        <button id="btnStart" class="btn-primary">
+                            <span>▶</span>
+                            <span>START RUN</span>
+                        </button>
+                        <div class="modal-hint">Press <kbd>SPACE</kbd> or click to begin</div>
+                    </div>
+                </div>
+
+                <!-- Paused Modal -->
+                <div id="pauseModal" class="modal-overlay">
+                    <div class="modal-card">
+                        <h2 class="modal-title paused">GAME PAUSED</h2>
+                        <button id="btnResume" class="btn-primary" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+                            <span>▶</span>
+                            <span>RESUME</span>
+                        </button>
+                        <div class="modal-hint">Press <kbd>P</kbd> or <kbd>ESC</kbd> to resume</div>
+                    </div>
+                </div>
+
+                <!-- Game Over Modal -->
+                <div id="gameOverModal" class="modal-overlay">
+                    <div class="modal-card">
+                        <h2 class="modal-title">GAME OVER</h2>
+                        <div class="modal-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Score</span>
+                                <span id="finalScore" class="stat-value">00000</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Best Record</span>
+                                <span id="bestScore" class="stat-value">00000</span>
+                            </div>
+                        </div>
+                        <button id="btnRestart" class="btn-primary">
+                            <span>🔄</span>
+                            <span>PLAY AGAIN</span>
+                        </button>
+                        <div class="modal-hint">Press <kbd>SPACE</kbd> or <kbd>ENTER</kbd> to restart</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Touch Controls for Mobile / Tablets -->
+        <div class="touch-controls">
+            <button id="touchDuck" class="touch-btn">
+                <span>🔻 DUCK</span>
+                <span class="touch-btn-sub">Hold down</span>
+            </button>
+            <button id="touchJump" class="touch-btn">
+                <span>🔺 JUMP</span>
+                <span class="touch-btn-sub">Tap or hold</span>
+            </button>
+        </div>
+
+        <!-- Controls Legend -->
+        <footer class="controls-card">
+            <div class="control-item">
+                <kbd>SPACE</kbd> or <kbd>↑</kbd> or <kbd>W</kbd>
+                <span>Jump (Hold for higher)</span>
+            </div>
+            <div class="control-item">
+                <kbd>↓</kbd> or <kbd>S</kbd>
+                <span>Duck &amp; Fast Drop</span>
+            </div>
+            <div class="control-item">
+                <kbd>P</kbd> or <kbd>ESC</kbd>
+                <span>Pause</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Game Scripts -->
+    <script src="audio.js"></script>
+    <script src="sprites.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
